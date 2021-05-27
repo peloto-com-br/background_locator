@@ -144,7 +144,7 @@ class IsolateHolderService : MethodChannel.MethodCallHandler, LocationUpdateList
         wakeLockTime = intent.getIntExtra(Keys.SETTINGS_ANDROID_WAKE_LOCK_TIME, 60) * 60 * 1000L
 
         locatorClient = getLocationClient(context)
-        locatorClient.requestLocationUpdates(getLocationRequest(intent))
+        locatorClient?.requestLocationUpdates(getLocationRequest(intent))
 
         start()
     }
@@ -158,7 +158,7 @@ class IsolateHolderService : MethodChannel.MethodCallHandler, LocationUpdateList
             }
         }
 
-        locatorClient.removeLocationUpdates()
+        locatorClient?.removeLocationUpdates()
         PreferencesManager.setServiceRunning(this, false)
         stopForeground(true)
         stopSelf()
